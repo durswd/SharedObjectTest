@@ -2,6 +2,7 @@
 #pragma once
 
 #include <atomic>
+#include <string>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -21,6 +22,22 @@
 #else
 #define _EXPORT
 #endif
+
+inline std::string ConvertSharedObjectPath(std::string path)
+{
+#ifndef _WIN32
+	path = "lib" + path;
+#endif
+
+#ifndef _WIN32
+	path += ".dll";
+#elif defined(__APPLE__)
+	path += ".dylib";
+#else
+	path += ".so";
+#endif
+	return path;
+}
 
 /**
 @brief	A class to controll DLL

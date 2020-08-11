@@ -10,7 +10,7 @@ extern "C" {
     _EXPORT void _STDCALL Init()
     {
         dll = new DynamicLinkLibrary();
-        dll->Load("Base.dll");
+        dll->Load(ConvertSharedObjectPath("Base").c_str());
     }
 
     _EXPORT void _STDCALL Terminate()

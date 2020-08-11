@@ -5,10 +5,10 @@ typedef void(_STDCALL* VoidFunc)();
 int main()
 {
 	auto dll1 = new DynamicLinkLibrary();
-	dll1->Load("Link1.dll");
+	dll1->Load(ConvertSharedObjectPath("Link1").c_str());
 
 	auto dll2 = new DynamicLinkLibrary();
-	dll2->Load("Link2.dll");
+	dll2->Load(ConvertSharedObjectPath("Link2").c_str());
 
 	dll1->GetProc<VoidFunc>("Init")();
 	dll2->GetProc<VoidFunc>("Init")();
