@@ -29,7 +29,7 @@ inline std::string ConvertSharedObjectPath(std::string path)
 	path = "lib" + path;
 #endif
 
-#ifndef _WIN32
+#ifdef _WIN32
 	path += ".dll";
 #elif defined(__APPLE__)
 	path += ".dylib";
